@@ -1,0 +1,74 @@
+[
+  {
+    "id": "hi_01",
+    "category": "hinglish",
+    "text": "चलो beta, आज हम Newton's second law समझते हैं। Force equals mass into acceleration, यानी F = ma।",
+    "note": "Physics lecture opener, heavy code-mix + formula readout"
+  },
+  {
+    "id": "hi_02",
+    "category": "hinglish",
+    "text": "देखो, अगर velocity constant है तो acceleration zero होगा — ये बहुत important concept है exam के लिए।",
+    "note": "Conceptual explanation, English technical terms in Devanagari sentence"
+  },
+  {
+    "id": "hi_03",
+    "category": "hinglish",
+    "text": "Guys, ये question थोड़ा conceptual है, so इसको ध्यान से समझना — यहाँ integration by parts लगेगा।",
+    "note": "Roman-script English lead-in + Devanagari body"
+  },
+  {
+    "id": "hi_04",
+    "category": "hinglish",
+    "text": "अरे वाह! तुमने बिलकुल सही answer दिया, बहुत बढ़िया! Keep it up, इसी तरह practice करते रहो।",
+    "note": "Praise / encouragement — expressiveness stress test"
+  },
+  {
+    "id": "hi_05",
+    "category": "hinglish",
+    "text": "Photosynthesis में plants sunlight को chemical energy में convert करते हैं, okay? ये chapter बहुत scoring है।",
+    "note": "Biology, English domain terms + tag question"
+  },
+  {
+    "id": "hi_06",
+    "category": "hinglish",
+    "text": "एक second रुको — ये derivation थोड़ा tricky है, pehle free body diagram बनाओ, फिर equations लिखो।",
+    "note": "Step instruction, mixed Roman + Devanagari Hindi"
+  },
+  {
+    "id": "hi_07",
+    "category": "hinglish",
+    "text": "Basically momentum conservation का मतलब है: total momentum before collision equals total momentum after collision।",
+    "note": "Definition read, long English clause inside Hindi frame"
+  },
+  {
+    "id": "en_01",
+    "category": "english",
+    "text": "Welcome back to Physics Wallah. Today we'll master rotational dynamics, step by step.",
+    "note": "Pure English baseline for voice quality"
+  },
+  {
+    "id": "en_02",
+    "category": "english",
+    "text": "So the moment of inertia depends on how the mass is distributed about the axis of rotation.",
+    "note": "Pure English, technical"
+  },
+  {
+    "id": "emo_01",
+    "category": "emotion",
+    "text": "Okay so let me explain this concept <sigh> it's a bit tricky, but stay with me.",
+    "note": "Emotion tag: <sigh> (base model)"
+  },
+  {
+    "id": "emo_02",
+    "category": "emotion",
+    "text": "And that's the final answer <laugh> see, physics is not that scary after all.",
+    "note": "Emotion tag: <laugh> (base model)"
+  },
+  {
+    "id": "emo_03",
+    "category": "emotion",
+    "text": "Hmm <yawn> we've been at this for two hours, let's take a short break and come back fresh.",
+    "note": "Emotion tag: <yawn> (base model)"
+  }
+]

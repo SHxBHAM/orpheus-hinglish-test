@@ -1,0 +1,9 @@
+outputs/
+outputs_*/
+*.wav
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+hf.env

@@ -1,0 +1,7 @@
+# Orpheus official inference path (vLLM + SNAC under the hood).
+# Install order matters: orpheus-speech may pull an incompatible vLLM, so we
+# pin vLLM explicitly afterwards (see setup_runpod.sh).
+orpheus-speech
+vllm==0.7.3
+snac
+huggingface_hub
