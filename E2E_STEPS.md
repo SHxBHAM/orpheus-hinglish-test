@@ -23,12 +23,21 @@ ssh -p <PORT> <USER>@<IP>          # connect however you normally do
 git clone https://github.com/SHxBHAM/orpheus-hinglish-test.git
 cd orpheus-hinglish-test
 
+# venv that REUSES the system torch/CUDA (Debian blocks system-wide pip: PEP 668).
+# --system-site-packages = no giant torch reinstall, guaranteed CUDA match.
+python3 -m venv --system-site-packages .venv
+source .venv/bin/activate
+
 # HF token — needed to download the gated base model.
 # Copy the value from your Mac's  NewerTTS/.env  (the HF_TOKEN=... line):
 export HF_TOKEN='hf_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 
-# deps (torch is already on your TTS box; add it to the list if `python -c "import torch"` fails)
-pip install -U transformers accelerate snac numpy
+# deps — do NOT add numpy/torch here (reuse the system ones; upgrading numpy can
+# break the system torch's pin).
+pip install transformers accelerate snac
+
+# sanity check — must print 'cuda True' before continuing
+python -c "import torch,transformers,snac; print('torch',torch.__version__,'cuda',torch.cuda.is_available())"
 
 # go
 python infer.py
@@ -55,6 +64,9 @@ RTF well under the 4090's ~1.8. Output lands in `outputs/` (WAVs + `index.html` 
   the Hinglish/Devanagari lecture lines — the real comparison vs VoxCPM2.
 
 ## Troubleshooting
+- **`error: externally-managed-environment`** (Debian/PEP 668) → you skipped the venv.
+  Run the `python3 -m venv --system-site-packages .venv && source .venv/bin/activate`
+  lines above first, or append `--break-system-packages` to the `pip install`.
 - **`401 / gated repo`** on the base model → `HF_TOKEN` not exported, or wrong account.
 - **`401 / gated`** on the Hindi model → you skipped step 0; either do it, or switch
   `JOBS` in `infer.py` to a commented ungated community model.
