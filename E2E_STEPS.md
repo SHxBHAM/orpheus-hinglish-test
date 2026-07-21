@@ -67,6 +67,12 @@ RTF well under the 4090's ~1.8. Output lands in `outputs/` (WAVs + `index.html` 
 - **`error: externally-managed-environment`** (Debian/PEP 668) → you skipped the venv.
   Run the `python3 -m venv --system-site-packages .venv && source .venv/bin/activate`
   lines above first, or append `--break-system-packages` to the `pip install`.
+- **`device=cpu` / `cuda=False` / "NVIDIA driver too old"** → the system torch was
+  built for a newer CUDA than your driver. Install a torch matching your driver, e.g.
+  for a CUDA 12.8 driver (`found version 12080`):
+  `pip install --force-reinstall --no-deps torch --index-url https://download.pytorch.org/whl/cu128`
+  (use `cu124` if `cu128` still reports "too old"). Re-check with
+  `python -c "import torch; print(torch.cuda.is_available())"`.
 - **`401 / gated repo`** on the base model → `HF_TOKEN` not exported, or wrong account.
 - **`401 / gated`** on the Hindi model → you skipped step 0; either do it, or switch
   `JOBS` in `infer.py` to a commented ungated community model.
