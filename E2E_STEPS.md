@@ -59,11 +59,29 @@ RTF well under the 4090's ~1.8. Output lands in `outputs/` (WAVs + `index.html` 
 
 ---
 
+## 3. (New) Add Veena — the native-Hinglish reference
+`maya-research/Veena` is a Llama+SNAC TTS **built for Hindi/English code-mixing** —
+the fallback if Orpheus's code-mix stays weak. It's **ungated** (no HF gate to click)
+and runs in **bf16 (~7GB)** on the L40S — no bitsandbytes/4-bit needed. Same venv:
+```bash
+# in the same activated .venv, after infer.py has run:
+python infer_veena.py
+```
+It renders the SAME sentences (voices `kavya` + `agastya` by default; edit `VOICES`
+at the top to add `maitri`/`vinaya`), writes `veena_*.wav` into `outputs/`, and
+builds **`outputs/compare.html`** — every model's take on each sentence stacked for a
+direct A/B. Pull it the same way:
+```bash
+scp -P <PORT> -r <USER>@<IP>:~/orpheus-hinglish-test/outputs ./outputs && open outputs/compare.html
+```
+
 ## What you're testing
 - **base** (`canopylabs/orpheus-3b-0.1-ft`, voice `tara`): English + emotion tags
   (`<sigh> <laugh> <yawn>`) — Orpheus's expressiveness ceiling.
 - **hindi_official** (`canopylabs/3b-hi-ft-research_release`, voice `ऋतिका`):
-  the Hinglish/Devanagari lecture lines — the real comparison vs VoxCPM2.
+  the Hinglish/Devanagari lecture lines — the Orpheus code-mix result (came out bad).
+- **veena_kavya / veena_agastya** (`maya-research/Veena`): the same lecture lines from
+  a natively-Hinglish model — the code-mix quality ceiling to compare against.
 
 ## Troubleshooting
 - **`error: externally-managed-environment`** (Debian/PEP 668) → you skipped the venv.
